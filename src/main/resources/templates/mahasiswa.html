@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Mahasiswa | Test</title>
+    <meta content="Responsive admin theme build on top of Bootstrap 4" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/metismenu.min.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/icons.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/style.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/all.min.css}" rel="stylesheet" media="screen">
+    <link th:href="@{/css/dataTables.bootstrap4.min.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/buttons.bootstrap4.min.css}" rel="stylesheet" media="screen" />
+    <link th:href="@{/css/responsive.bootstrap4.min.css}" rel="stylesheet" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+    <div class="topbar">
+        <div class="topbar-left">
+            <a href="index.html" class="logo">
+                        <span class="logo-light">
+                            <img src="assets/images/logo-light.png" alt="" height="16">
+                        </span>
+                <span class="logo-sm">
+                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                        </span>
+            </a>
+        </div>
+        <nav class="navbar-custom">
+            <ul class="navbar-right list-inline float-right mb-0">
+
+                <li class="dropdown notification-list list-inline-item">
+                    <div class="dropdown notification-list nav-pro-img">
+                        <a class="dropdown-toggle nav-link arrow-none nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <img src="assets/images/users/user-4.jpg" alt="user" class="rounded-circle">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-wallet"></i> My Wallet</a>
+                            <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings"></i> Settings</a>
+                            <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline"></i> Lock screen</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="list-inline menu-left mb-0">
+                <li class="float-left">
+                    <button class="button-menu-mobile open-left waves-effect">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+    <div class="left side-menu">
+        <div class="slimscroll-menu" id="remove-scroll">
+            <div id="sidebar-menu">
+                <ul class="metismenu" id="side-menu">
+                    <li class="menu-title">Overview</li>
+                    <li>
+                        <a href="index.html" class="waves-effect">
+                            <i class="fas fa-home"></i><span> Dashboard </span>
+                        </a>
+                    </li>
+                    <li class="menu-title">Apps</li>
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-users"></i><span> Email <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="email-inbox.html">Inbox</a></li>
+                            <li><a href="email-read.html">Email Read</a></li>
+                            <li><a href="email-compose.html">Email Compose</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="page-title-box">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <h4 class="page-title">Mahasiswa</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Tables</a></li>
+                                <li class="breadcrumb-item active">Data Mahasiswa</li>
+                            </ol>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="float-right d-none d-md-block">
+                                <div class="dropdown">
+
+                                    <a class="btn btn-primary" th:href="${'/mahasiswa/create/'}" type="button" style="color: #fff" title="Add Mahasiswa"><i class="fas fa-plus"></i> Add</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mt-0 header-title">Data Mahasiswa</h4>
+                                <p class="text-muted mb-4"></code>.
+                                </p>
+                                <div>
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Nim</th>
+                                            <th>Jurusan</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+
+                                        <div  th:if="${not #lists.isEmpty(mahasiswa)}">
+                                            <tbody>
+                                            <tr th:each="mahasiswas : ${mahasiswa}">
+                                                <td th:text="${mahasiswas.nama}"></td>
+
+                                                <td th:text="${mahasiswas.nim}"></td>
+                                                <td th:text="${mahasiswas.jurusan}"></td>
+                                                <td>
+                                                    <a th:href="${'/mahasiswa/edit/'+mahasiswas.id}" class="btn btn-warning"><i class="fas fa-pen" title="Edit"></i></a>
+                                                    <a th:href="${'/mahasiswa/hapus/'+mahasiswas.id}" class="btn btn-danger"><i class="fas fa-trash" title="Delete"></i></a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </div>
+
+                                    </table>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            © 2020 FeytoDev
+        </footer>
+
+    </div>
+</div>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/js/metismenu.min.js}"></script>
+<script th:src="@{/js/jquery.slimscroll.js}"></script>
+<script th:src="@{/js/waves.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/dataTables.bootstrap4.min.js}"></script>
+<!-- Buttons examples -->
+<script th:src="@{/js/plugins/datatables/dataTables.buttons.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/jszip.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/pdfmake.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/vfs_fonts.js}"></script>
+<script th:src="@{/js/plugins/datatables/buttons.html5.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/buttons.print.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/buttons.colVis.min.js}"></script>
+<!-- Responsive examples -->
+<script th:src="@{/js/plugins/datatables/dataTables.responsive.min.js}"></script>
+<script th:src="@{/js/plugins/datatables/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{/js/datatables.init.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script>
+    $('datatable').DataTable();.
+</script>
+
+</body>
+
+</html>
